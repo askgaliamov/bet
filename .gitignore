@@ -1,0 +1,9 @@
+.project
+.classpath
+.settings/
+target/
+build/
+bower_components/
+.idea
+*.iml
+src/main/resources/static/bower_components/

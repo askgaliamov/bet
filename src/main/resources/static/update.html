@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./bower_components/bootstrap-css-only/css/bootstrap.min.css"/>
+</head>
+<body ng-app="betApp">
+
+<bt/>
+<div ng-controller="GameCtrl" data-ng-init="loadGames()">
+    <table border="1" border="1" ng-if="!bet">
+        <tr>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Win</td>
+            <td>Draw</td>
+            <td>Lose</td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="game in games">
+            <td>{{game.name}}</td>
+            <td>{{game.odd.name}}</td>
+            <td><input size="4" ng-model="game.odd.win"></td>
+            <td><input size="4" ng-model="game.odd.draw"></td>
+            <td><input size="4" ng-model="game.odd.lose"></td>
+            <td style="cursor: pointer" ng-click="sendUpdate(game)">update</td>
+        </tr>
+    </table>
+
+
+</div>
+
+<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
+<script type="text/javascript" src="./bower_components/lodash/dist/lodash.min.js"></script>
+<script type="text/javascript" src="./bower_components/sockjs/sockjs.min.js"></script>
+<script type="text/javascript" src="./bower_components/stomp-websocket/lib/stomp.min.js"></script>
+<script type="text/javascript" src="./app/app.js"></script>
+<script type="text/javascript" src="./app/controllers.js"></script>
+<script type="text/javascript" src="./app/services.js"></script>
+</body>
+</html>

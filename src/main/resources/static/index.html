@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./bower_components/bootstrap-css-only/css/bootstrap.min.css"/>
+</head>
+<body ng-app="betApp">
+<bt/>
+<div ng-controller="GameCtrl" data-ng-init="loadGames()">
+
+    <span>{{infoBox}}</span>
+    <bt/>
+    <table border="1" border="1" ng-if="!bet">
+        <tr>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Win</td>
+            <td>Draw</td>
+            <td>Lose</td>
+        </tr>
+        <tr ng-repeat="game in games">
+            <td>{{game.name}}</td>
+            <td>{{game.odd.name}}</td>
+            <td style="cursor: pointer" ng-click="showBettingSlip(game, 'win')">{{game.odd.win}}</td>
+            <td style="cursor: pointer" ng-click="showBettingSlip(game, 'draw')">{{game.odd.draw}}</td>
+            <td style="cursor: pointer" ng-click="showBettingSlip(game, 'lose')">{{game.odd.lose}}</td>
+        </tr>
+    </table>
+
+    <table border="1" ng-if="bet">
+        <tbody>
+        <tr>
+            <td align="center">Betting Slip</td>
+        </tr>
+        <tr>
+            <td>{{bet.name}} | {{bet.type}} | {{bet.amount}} | {{bet.odd}}</td>
+        </tr>
+        <tr>
+            <td align="center" style="cursor: pointer" ng-click="placeBet()">Place bet</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
+<script type="text/javascript" src="./bower_components/lodash/dist/lodash.min.js"></script>
+<script type="text/javascript" src="./bower_components/sockjs/sockjs.min.js"></script>
+<script type="text/javascript" src="./bower_components/stomp-websocket/lib/stomp.min.js"></script>
+<script type="text/javascript" src="./app/app.js"></script>
+<script type="text/javascript" src="./app/controllers.js"></script>
+<script type="text/javascript" src="./app/services.js"></script>
+</body>
+</html>
