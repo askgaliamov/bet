@@ -25,3 +25,10 @@ Open new terminal window
 cd test/functional
 mavn clean test
 ```
+
+## Simulation mode
+In the src/main/resources/application.properties set: 
+```
+spring.main.demo=true
+```
+Then run application. Updates will come through 15 seconds afters start, with interval 100-500 ms.
